@@ -1,1 +1,1 @@
-web: gunicorn awwards_prj.wsgi --log-file -
+web: gunicorn neighbourhood.wsgi --log-file -
