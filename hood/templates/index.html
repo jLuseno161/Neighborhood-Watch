@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="container-fluid">
+    <div class="row">
+
+        {% for hood in hoods %}
+
+        <div class="col-sm-12 col-lg-4 mb-4">
+            <div class="card mb-4">
+
+                <h3><b>Name: {{hood.hood_name}}</b> </h3>
+                <h6><b>Location: {{hood.hood_location}}</b></h6>
+                <img class="" src="{{hood.hood_photo.url}}" alt="Card image cap" style="height: 300px;">
+
+
+                {%if request.user.profile.neighbourhood == hood %}
+
+                <a class="btn btn-default btn-small" href="/">View Hood</a>
+                <a class="btn btn-danger" href="/">Leave Hood</a>
+
+                {%elif not request.user.profile.neighbourhood%}
+
+
+                <a class="btn btn-default" href="{%url 'joinhood' hood.id%}">Join Hood</a>
+
+                {%endif%}
+            </div>
+
+        </div><br><br><br><br><br><br>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
