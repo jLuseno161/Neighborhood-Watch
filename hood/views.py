@@ -1,3 +1,4 @@
+from hood.models import Post
 from hood.forms import SignUpForm
 from django.http.response import HttpResponse
 from django.shortcuts import render
@@ -26,3 +27,8 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form})
 
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    current_user = request.user
+    posts = Post.objects.filter(user=current_user.id).all
+    return render(request, 'registration/profile.html', {"posts": posts})
