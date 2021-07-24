@@ -1,4 +1,4 @@
-from hood.models import Post, Profile
+from hood.models import Neighbourhood, Post, Profile
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -28,6 +28,9 @@ class UpdateProfileForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        exclude = ['title', 'image','content','timestamp','neighbourhood']
+        exclude = ['title', 'image','content','timestamp']
 
-
+class NewHoodForm(forms.ModelForm):
+    class Meta:
+        model = Neighbourhood
+        exclude = ('admin',)
