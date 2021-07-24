@@ -1,4 +1,4 @@
-from hood.models import Profile
+from hood.models import Post, Profile
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -22,5 +22,12 @@ class UpdateUserForm(forms.ModelForm):
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['contact','profile_pic', 'bio']
+        fields = ['email','profile_pic', 'bio','neighbourhood']
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['title', 'image','content','timestamp','neighbourhood']
+
 
