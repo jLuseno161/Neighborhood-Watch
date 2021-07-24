@@ -7,7 +7,8 @@ urlpatterns = [
     path('',views.index,name = 'index'),
     path('signup/', views.signup, name='signup'),
     path('profile/',views.profile, name='profile'),
-    # path('update/<id>', views.update_profile, name='update_profile'),
+    path('joinhood/<id>', views.joinhood, name='joinhood'),
+    path('update/<id>', views.update_profile, name='update_profile'),
 
 ]
 if settings.DEBUG:
