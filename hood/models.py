@@ -90,3 +90,13 @@ class Business(models.Model):
     def update_business(self):
         name = self.business_name
         self.business_name = name
+
+    @classmethod
+    def business_by_id(cls, id):
+        business = Business.objects.filter(id=id)
+        return business
+
+    @classmethod
+    def search_business(cls, business_name):
+        return cls.objects.filter(title__icontains=business_name).all()
+
