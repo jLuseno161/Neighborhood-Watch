@@ -1,6 +1,6 @@
-from hood.models import Post, Profile
+from hood.models import Post, Profile,Neighbourhood
 from django.contrib.auth.models import User
-from hood.forms import SignUpForm, UpdateProfileForm, UpdateUserForm
+from hood.forms import NewHoodForm, SignUpForm, UpdateProfileForm, UpdateUserForm
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
@@ -10,7 +10,9 @@ from django.contrib.auth import login, authenticate
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):    
-    return HttpResponse('Hi there')
+    # return HttpResponse('Hi there')
+    hoods = Neighbourhood.objects.all()
+    return render(request, 'index.html', {"hoods": hoods})
 
 def signup(request):
     print('here')
@@ -46,3 +48,10 @@ def update_profile(request, id):
         return HttpResponseRedirect("/profile")
 
     return render(request, "registration/update_profile.html", {"form": form, "form2": form2})
+
+@login_required(login_url='/accounts/login/')
+def joinhood(request, id):
+    hood = get_object_or_404(Neighbourhood, id=id)
+    request.user.profile.neighbourhood = hood
+    request.user.profile.save()
+    return redirect('index')
