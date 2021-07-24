@@ -5,9 +5,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-
-
-
 # Create your models here.
 class Neighbourhood(models.Model):
     hood_name = models.CharField(max_length=200)
@@ -44,7 +41,7 @@ class Profile(models.Model):
     email = models.CharField(max_length=30, blank=True)
     profile_pic = CloudinaryField('profile')
     bio = models.TextField(max_length=500, blank=True)
-    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,blank=True, null=True)
 
     def __str__(self):
         return self.user.username
@@ -65,40 +62,40 @@ class Profile(models.Model):
         Profile.objects.get(user_id=id)
 
 
-class Business(models.Model):
-    business_name = models.CharField(max_length=250)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    business_hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
-    business_email = models.CharField(max_length=30)
-    business_desc = models.TextField(blank=True)
-    business_photo = CloudinaryField('businessphoto',default='')
+# class Business(models.Model):
+#     business_name = models.CharField(max_length=250)
+#     user = models.ForeignKey(User,on_delete=models.CASCADE)
+#     business_hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+#     business_email = models.CharField(max_length=30)
+#     business_desc = models.TextField(blank=True)
+#     business_photo = CloudinaryField('businessphoto',default='')
 
-    def __str__(self):
-        return self.business_name
+#     def __str__(self):
+#         return self.business_name
 
-    def save_business(self):
-        self.save()
+#     def save_business(self):
+#         self.save()
 
-    def delete_business(self):
-        self.delete()
+#     def delete_business(self):
+#         self.delete()
 
-    @classmethod
-    def find_business(cls,business_id):
-        business = cls.objects.get(id = business_id)
-        return business
+#     @classmethod
+#     def find_business(cls,business_id):
+#         business = cls.objects.get(id = business_id)
+#         return business
 
-    def update_business(self):
-        name = self.business_name
-        self.business_name = name
+#     def update_business(self):
+#         name = self.business_name
+#         self.business_name = name
 
-    @classmethod
-    def business_by_id(cls, id):
-        business = Business.objects.filter(id=id)
-        return business
+#     @classmethod
+#     def business_by_id(cls, id):
+#         business = Business.objects.filter(id=id)
+#         return business
 
-    @classmethod
-    def search_business(cls, business_name):
-        return cls.objects.filter(title__icontains=business_name).all()
+#     @classmethod
+#     def search_business(cls, business_name):
+#         return cls.objects.filter(title__icontains=business_name).all()
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
