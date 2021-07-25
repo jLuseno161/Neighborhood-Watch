@@ -254,7 +254,7 @@
 <body>
     <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><i class="fa fa-pied-piper"></i>PJ<b>wards</b></a>
+            <a class="navbar-brand" href="/"><i class="fa fa-pied-piper"></i>My<b>hood</b></a>
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="navbar-toggler-icon"></span>
                 <span class="icon-bar"></span>
@@ -263,21 +263,15 @@
             </button>
         </div>
         <div id="navbarCollapse" class="collapse navbar-collapse">
-            <form class="navbar-form form-inline" role="search" action="{% url 'search' %}">
+            <form class="navbar-form form-inline" role="search" action="/">
                 <div class="input-group search-box">
-                    <input type="text" id="search" class="form-control" placeholder="Search projects..." name="project">
+                    <input type="text" id="search" class="form-control" placeholder="Search business..." name="business">
                     <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <!-- <li class="active"><a href="/"><i class="fa fa-home"></i><span>Home</span></a></li> -->
-                <li><a href="{% url 'post_prj' %}"><i class="fa fa-plus-circle"></i><span>Add Project</span></a></li>
+                <li><a href="/"><i class="fa fa-plus-circle"></i><span>Add business</span></a></li>
                 <li><a href="/admin"><i class="fa fa-user"></i><span>Admin</span></a></li>
-                <!-- <li><a href="#"><i class="fa fa-users"></i><span>Team</span></a></li>
-                <li><a href="#"><i class="fa fa-pie-chart"></i><span>Reports</span></a></li>
-                <li><a href="#"><i class="fa fa-briefcase"></i><span>Careers</span></a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i><span>Messages</span></a></li>
-                <li><a href="#"><i class="fa fa-bell"></i><span>Notifications</span></a></li> -->
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
                         <img src="{{user.profile.profile_pic.url }}" class="avatar"

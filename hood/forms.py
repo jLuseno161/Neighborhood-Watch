@@ -12,11 +12,10 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2', )
 
 class UpdateUserForm(forms.ModelForm):
-    email = forms.EmailField(max_length=254, help_text='Required.')
 
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('username',)
 
 
 class UpdateProfileForm(forms.ModelForm):
