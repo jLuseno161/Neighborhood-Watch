@@ -17,7 +17,7 @@
                 style="background-color: rgb(250, 246, 246);box-sizing: border-box; margin-top:2%;box-shadow: 0vh 0vh 1vh gainsboro;">
                 <div class="row" style="padding-top: 1%">
                     <div class="col-md-12">
-                        <h4 style="font-weight:600;">Name: <a href="/" class="text-right"
+                        <h4 style="font-weight:600;">Name: <a href="{% url 'view_hood' id=hood.id %}" class="text-right"
                                 style="text-decoration: none;">{{hood.hood_name}}
                                 <img src="https://img.icons8.com/color/48/000000/circled-up-right--v1.png"
                                     style="width:15px;height:auto" />
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="">
-                    <a href="/">
+                    <a href="{% url 'view_hood' id=hood.id %}">
                         <img src="{{hood.hood_photo.url}}" class="img-responsive" alt="{{image.hood_name}}"
                             style="width:100%;width:100%">
                         <div class="overlay">

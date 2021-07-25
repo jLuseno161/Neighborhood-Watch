@@ -9,7 +9,7 @@ urlpatterns = [
     path('profile/',views.profile, name='profile'),
     path('joinhood/<id>', views.joinhood, name='joinhood'),
     path('update/<id>', views.update_profile, name='update_profile'),
-
+    path('hood_info/(?P<id>\d+)', views.view_hood, name='view_hood'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
