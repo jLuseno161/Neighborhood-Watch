@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-md-4">
-            <h3 class="mt-4" style="font-weight: 700; ">Business available in hood</h3>
+            <h3 class="mt-4" style="font-weight: 600; ">Business available in hood</h3>
             <hr>
 
             {% for business in business%}
@@ -43,18 +43,40 @@
 
             {% endif %}-->
             <!-- <p> <span style="font-weight: 700;">Name : </span> {{business.business_name}} </p> -->
-            <a href="" style="font-weight: 700; font-size: 12pt;">
+
+            <a href="#{{business.id}}" data-toggle="modal" data-target="#{{business.id}}"
+                style="font-weight: 700; font-size: 12pt;">
                 <li>{{business.business_name}}</li>
             </a>
+            <div class="modal fade" id="{{business.id}}" role="dialog">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="color:navy; font-weight:700">{{business.business_name}}
+                                Business</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-justify"> <b>Description : </b> {{business.business_desc}} </p>
+                            <p><b>Location : </b> {{business.business_hood}}</p>
+                            <p><b>Email : </b> {{business.business_email}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
             {%endfor%}
             <!-- <a class="btn btn-sm btn-info btn-block" style="margin-top:5%; " href="{%url 'new_business'%}">Add
                 Business</a> -->
             <hr>
 
-            N/B: Click name to Checkout Business
-        </div>       
-         <div class="col-md-1"></div>
+           <p style="color:silver"> N/B: Click name to Checkout Business</p>
+        </div>
+        <div class="col-md-1"></div>
 
 
 
