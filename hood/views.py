@@ -66,7 +66,10 @@ def joinhood(request, id):
 @login_required(login_url='/accounts/login')
 def view_hood(request, id):
     hood = Neighbourhood.objects.get(id=id)
-    biz = Business.business_by_id(id=id)
+    biz = Business.objects.filter(business_hood=id)
+
+
+    # business_hood
     
     # biz_available = None
     # if biz is None:
