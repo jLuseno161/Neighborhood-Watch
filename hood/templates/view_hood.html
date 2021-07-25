@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% block content %}
+<style>
+    .panel {
+        border: none;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default" style="margin-top:5%">
+                <img class="card-img-top mb-10 img-responsive" src="{{hood.hood_photo.url}}"
+                    style="height:auto; width:100%">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p> <span style="font-weight: 700;">Name : </span> {{hood.hood_name}} </p>
+                            <p><span style="font-weight: 700;">Location : </span> {{ hood.hood_location}}</p>
+                            <p> <span style="font-weight: 700;">Description : </span> {{ hood.hood_description  }} </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2 class="mt-4">Business</h2>
+            <button class="btn btn-sm btn-info btn-block" style="margin-top:4px;" value="review" type="submit">Add Business</button>
+
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+{% endblock %}
