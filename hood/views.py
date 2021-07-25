@@ -1,6 +1,6 @@
-from hood.models import Post, Profile, Neighbourhood
+from hood.models import Business, Post, Profile, Neighbourhood
 from django.contrib.auth.models import User
-from hood.forms import NewHoodForm, SignUpForm, UpdateProfileForm, UpdateUserForm
+from hood.forms import NewBusinessForm, NewHoodForm, SignUpForm, UpdateProfileForm, UpdateUserForm
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
@@ -66,7 +66,32 @@ def joinhood(request, id):
 @login_required(login_url='/accounts/login')
 def view_hood(request, id):
     hood = Neighbourhood.objects.get(id=id)
+    biz = Business.business_by_id(id=id)
+    
+    # biz_available = None
+    # if biz is None:
+    #     biz_available = False
+    # else:
+    #     biz_available = True
+
     current_user = request.user
     return render(request, 'view_hood.html',  {
-        'hood': hood,
+        'hood': hood,'business':biz,
     })
+
+@login_required(login_url='/accounts/login/')
+def new_business(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewBusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            biz = form.save(commit=False)
+            biz.user = current_user
+
+            biz.save()
+
+        return redirect('index')
+
+    else:
+        form = NewBusinessForm()
+    return render(request, 'new_business.html', {"form": form})

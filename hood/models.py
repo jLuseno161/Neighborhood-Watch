@@ -75,7 +75,7 @@ class Business(models.Model):
 
     def __str__(self):
         # return self.business_name
-        return f'{self.name} business'
+        return f'{self.business_name} business'
 
     def save_business(self):
         self.save()
@@ -84,7 +84,7 @@ class Business(models.Model):
         self.delete()
 
     @classmethod
-    def find_business(cls, business_id):
+    def get_business(cls, business_id):
         business = cls.objects.get(id=business_id)
         return business
 
