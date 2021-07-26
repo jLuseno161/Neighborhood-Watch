@@ -22,11 +22,9 @@ A Django application that allows users know about their Neighborhood, businesses
 * Leave My neighborhood when I decide to move out.
 * View details of a single neighborhood.
 * User is able to search for different businesses in the area
+* Only the admin can create a new neighborhood with by signing into the app with the credentials: `username: admin` & `password: admin`
 
-<!-- ## API Endpoints
 
-* [Profiles Endpoints](https://myhood20.herokuapp.com/api/v1/)
-* [Projects Endpoints](https://myhood20.herokuapp.com/api/v1/) -->
 
 ## Prerequisites
 

@@ -32,9 +32,9 @@ class Neighbourhood(models.Model):
     def occupants_count(self):
         return self.neighbourhood_users.count()
 
-    # def update_hood(self):
-    #     hood_name = self.hood_name
-    #     self.hood_name = hood_name
+    def update_hood(self):
+        hood_name = self.hood_name
+        self.hood_name = hood_name
 
 
 class Profile(models.Model):
