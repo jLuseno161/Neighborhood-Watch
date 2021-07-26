@@ -21,6 +21,19 @@
                             <p><span style="font-weight: 700;">Location : </span> {{ hood.hood_location}}</p>
                             <p> <span style="font-weight: 700;">Description : </span> {{ hood.hood_description  }} </p>
                             <br>
+                            <div style="padding-top:1%;padding-bottom:1%">
+                                {%if request.user.profile.neighbourhood == hood %}
+            
+                                <a class="btn btn-warning" href="{%url 'leavehood' hood.id%}">Leave Hood</a>
+            
+                                {%elif not request.user.profile.neighbourhood%}
+            
+            
+                                <a class="btn btn-info" href="{%url 'joinhood' hood.id%}">Join Hood</a>
+            
+                                {%endif%}
+                            </div>
+            
                         </div>
                     </div>
                 </div>

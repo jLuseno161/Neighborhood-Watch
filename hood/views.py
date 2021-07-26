@@ -62,6 +62,11 @@ def joinhood(request, id):
     request.user.profile.save()
     return redirect('index')
 
+def leavehood(request, id):
+    hood = get_object_or_404(Neighbourhood, id=id)
+    request.user.profile.neighbourhood = None
+    request.user.profile.save()
+    return redirect('index')
 
 @login_required(login_url='/accounts/login')
 def view_hood(request, id):
