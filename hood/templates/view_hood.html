@@ -9,7 +9,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-1"></div>
-
         <div class="col-md-6">
             <div class="panel panel-default" style="margin-top:5%">
                 <img class="card-img-top mb-10 img-responsive" src="{{hood.hood_photo.url}}"
@@ -23,23 +22,22 @@
                             <br>
                             <div style="padding-top:1%;padding-bottom:1%">
                                 {%if request.user.profile.neighbourhood == hood %}
-            
+
                                 <a class="btn btn-warning" href="{%url 'leavehood' hood.id%}">Leave Hood</a>
-            
+
                                 {%elif not request.user.profile.neighbourhood%}
-            
-            
+
+
                                 <a class="btn btn-info" href="{%url 'joinhood' hood.id%}">Join Hood</a>
-            
+
                                 {%endif%}
                             </div>
-            
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <h3 class="mt-4" style="font-weight: 600; ">Business available in hood</h3>
             <hr>
@@ -87,12 +85,36 @@
                 Business</a> -->
             <hr>
 
-           <p style="color:silver"> N/B: Click name to Checkout Business</p>
+            <p style="color:silver"> N/B: Click name to Checkout Business</p>
         </div>
         <div class="col-md-1"></div>
+    </div>
 
+    <h2 class="text-center" style="font-family: 'Kanit', sans-serif;">Posts</h2>
+    <hr>
+    <div class="row">
+        {% for post in post %}
+        <div class=" col-sm-12 col-lg-4 mb-5">
+            <div class="card">
+                <div class="mt-3 ml-3 mr-3" style="box-shadow: 0vh 0vh 5vh gainsboro; padding:2%">
+                    <p style="font-size:15pt"><b>{{post.title}}</b></p>
+                    <hr>
+                    <p><b>Post:</b> {{post.content}}</p>
+                    <p><b>Neighborhood:</b> {{post.neighbourhood}}</p>
+                    <div>
+                        <img src="{{post.image.url}}" class="img-responsive" alt="{{image.title}}"
+                            style="width:100%;width:100%">
+                    </div>
+                    <hr>
 
+                    <p><b>By:</b> {{post.user.username}}</p>
+                    <p style="color:rgb(112, 110, 110); font-size:9pt"><b>Posted on:</b> {{post.timestamp}}</p>
 
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

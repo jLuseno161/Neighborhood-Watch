@@ -101,12 +101,6 @@ class Business(models.Model):
     def search_business(cls, name):
         return cls.objects.filter(business_name__icontains=name).all()
 
-
-#     @classmethod
-#     def search_business(cls, business_name):
-#         return cls.objects.filter(title__icontains=business_name).all()
-
-
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=150)

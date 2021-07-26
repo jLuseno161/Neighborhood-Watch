@@ -72,7 +72,7 @@ def leavehood(request, id):
 def view_hood(request, id):
     hood = Neighbourhood.objects.get(id=id)
     biz = Business.objects.filter(business_hood=id)
-
+    post = Post.objects.filter(neighbourhood=id)
 
     # business_hood
     
@@ -84,7 +84,7 @@ def view_hood(request, id):
 
     current_user = request.user
     return render(request, 'view_hood.html',  {
-        'hood': hood,'business':biz,
+        'hood': hood,'business':biz,'post': post
     })
 
 @login_required(login_url='/accounts/login/')
@@ -107,7 +107,7 @@ def new_business(request):
 @login_required(login_url='/accounts/login')
 def view_biz(request, id):
     biz = Business.objects.get(id=id)
-    return render(request, 'view_biz.html',  {'business':biz,
+    return render(request, {'business':biz,
     })
 
 @login_required(login_url='/accounts/login/')
@@ -120,7 +120,6 @@ def search(request):
     else:
         message = "You haven't searched for anything, please try again"
     return render(request, 'search.html', {'message': message})
-
 
 @login_required(login_url='/accounts/login/')
 def post(request):
