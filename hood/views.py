@@ -122,7 +122,7 @@ def search(request):
     return render(request, 'search.html', {'message': message})
 
 @login_required(login_url='/accounts/login/')
-def post(request):
+def new_post(request):
     current_user = request.user
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -136,4 +136,4 @@ def post(request):
 
     else:
         form = PostForm()
-    return render(request, 'view_hood.html', {"form": form})
+    return render(request, 'new_post.html', {"form": form})
