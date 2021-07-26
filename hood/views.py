@@ -1,6 +1,6 @@
 from hood.models import Business, Post, Profile, Neighbourhood
 from django.contrib.auth.models import User
-from hood.forms import NewBusinessForm, NewHoodForm, SignUpForm, UpdateProfileForm, UpdateUserForm
+from hood.forms import NewBusinessForm, NewHoodForm, PostForm, SignUpForm, UpdateProfileForm, UpdateUserForm
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
@@ -121,3 +121,20 @@ def search(request):
         message = "You haven't searched for anything, please try again"
     return render(request, 'search.html', {'message': message})
 
+
+@login_required(login_url='/accounts/login/')
+def post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+
+            post.save()
+
+        return redirect('index')
+
+    else:
+        form = PostForm()
+    return render(request, 'view_hood.html', {"form": form})
