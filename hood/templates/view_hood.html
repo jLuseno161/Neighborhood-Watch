@@ -83,6 +83,7 @@
             {%endfor%}
             <!-- <a class="btn btn-sm btn-info btn-block" style="margin-top:5%; " href="{%url 'new_business'%}">Add
                 Business</a> -->
+                
             <hr>
 
             <p style="color:silver"> N/B: Click name to Checkout Business</p>
@@ -91,6 +92,12 @@
     </div>
 
     <h2 class="text-center" style="font-family: 'Kanit', sans-serif;">Posts</h2>
+    <div class="text-center">
+        <a href="{%url 'post'%}" class="btn btn-info"><i class="fa fa-plus-circle"></i><span style="color:white">Add
+                Posts</span></a>
+
+    </div>
+
     <hr>
     <div class="row">
         {% for post in post %}
