@@ -97,6 +97,11 @@ class Business(models.Model):
         name = self.business_name
         self.business_name = name
 
+    @classmethod
+    def search_business(cls, name):
+        return cls.objects.filter(business_name__icontains=name).all()
+
+
 #     @classmethod
 #     def search_business(cls, business_name):
 #         return cls.objects.filter(title__icontains=business_name).all()

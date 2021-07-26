@@ -39,7 +39,7 @@
         .navbar {
             color: #fff;
             /* background: #926dde; */
-            background-color: rgb(5, 5, 48);
+            background-color: navy;
             padding: 5px 16px;
             border-radius: 0;
             border: none;
@@ -263,7 +263,7 @@
             </button>
         </div>
         <div id="navbarCollapse" class="collapse navbar-collapse">
-            <form class="navbar-form form-inline" role="search" action="/">
+            <form class="navbar-form form-inline" role="search" action="{% url 'search' %}">
                 <div class="input-group search-box">
                     <input type="text" id="search" class="form-control" placeholder="Search business..." name="business">
                     <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
